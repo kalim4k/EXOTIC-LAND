@@ -26,9 +26,6 @@ const App: React.FC = () => {
   };
 
   // Logic to determine which models to show
-  // Step 0: First pair (Kenza, Soraya)
-  // Step 1: Second pair (Nayla, Farah)
-  // Step 2: Show first pair again or a mix for the bg, but we will focus on the models.
   const currentModels = step === Step.Country 
     ? [MODELS[0], MODELS[1]] 
     : [MODELS[2], MODELS[3]];
@@ -37,15 +34,15 @@ const App: React.FC = () => {
   const progress = ((step) / 2) * 100;
 
   return (
-    <div className="min-h-screen w-full bg-exotic-dark flex flex-col md:flex-row overflow-hidden relative">
+    <div className="min-h-screen w-full bg-exotic-bg flex flex-col md:flex-row overflow-hidden relative">
       
-      {/* Background Ambience */}
+      {/* Background Ambience - Plus subtil pour le thème clair */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-exotic-rose/10 rounded-full blur-[120px]" />
-         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-900/10 rounded-full blur-[120px]" />
+         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-exotic-rose/5 rounded-full blur-[100px]" />
+         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 rounded-full blur-[100px]" />
       </div>
 
-      {/* Left Panel: Models (Hidden on Success step for mobile, Visible on Desktop) */}
+      {/* Left Panel: Models */}
       <AnimatePresence mode="wait">
         {step !== Step.Success && (
           <motion.div 
@@ -58,8 +55,8 @@ const App: React.FC = () => {
           >
              {/* Logo/Header Mobile */}
              <div className="md:hidden w-full mb-4 flex justify-between items-center">
-                <h1 className="text-2xl font-black tracking-tighter text-white italic">EXOTIC</h1>
-                <div className="text-xs font-mono text-gray-500">
+                <h1 className="text-2xl font-black tracking-tighter text-exotic-text italic">EXOTIC</h1>
+                <div className="text-xs font-mono text-exotic-muted">
                     STEP {step + 1}/2
                 </div>
              </div>
@@ -70,11 +67,11 @@ const App: React.FC = () => {
       </AnimatePresence>
 
       {/* Right Panel: Content / Form */}
-      <div className={`w-full ${step === Step.Success ? 'md:w-full max-w-2xl mx-auto' : 'md:w-1/2 lg:w-2/5'} bg-exotic-dark/90 md:bg-black/20 backdrop-blur-xl border-l border-white/5 p-6 md:p-12 flex flex-col justify-center relative z-20 min-h-[50vh] md:min-h-screen`}>
+      <div className={`w-full ${step === Step.Success ? 'md:w-full max-w-2xl mx-auto' : 'md:w-1/2 lg:w-2/5'} bg-white/80 md:bg-white/60 backdrop-blur-xl border-l border-exotic-border p-6 md:p-12 flex flex-col justify-center relative z-20 min-h-[50vh] md:min-h-screen shadow-2xl shadow-gray-200/50`}>
         
-        {/* Progress Bar (Only during steps) */}
+        {/* Progress Bar */}
         {step !== Step.Success && (
-          <div className="w-full h-1 bg-white/10 rounded-full mb-8 md:mb-12 overflow-hidden">
+          <div className="w-full h-1 bg-gray-200 rounded-full mb-8 md:mb-12 overflow-hidden">
             <motion.div 
               className="h-full bg-exotic-rose"
               initial={{ width: 0 }}
@@ -86,9 +83,9 @@ const App: React.FC = () => {
 
         {/* Header Desktop */}
         <div className="hidden md:flex justify-between items-center mb-12">
-            <h1 className="text-3xl font-black tracking-tighter text-white italic">EXOTIC</h1>
+            <h1 className="text-3xl font-black tracking-tighter text-exotic-text italic">EXOTIC</h1>
             {step !== Step.Success && (
-               <span className="text-sm font-mono text-gray-500 border border-white/10 px-3 py-1 rounded-full">
+               <span className="text-sm font-mono text-exotic-muted border border-exotic-border px-3 py-1 rounded-full bg-white">
                   ÉTAPE {step + 1} SUR 2
                </span>
             )}
@@ -139,7 +136,7 @@ const App: React.FC = () => {
 
         {/* Footer */}
         <div className="mt-8 text-center md:text-left">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-exotic-muted">
             © 2024 EXOTIC. Tous droits réservés. <br/>
             En continuant, vous acceptez nos conditions d'utilisation.
           </p>

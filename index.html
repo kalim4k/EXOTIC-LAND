@@ -16,8 +16,11 @@
             },
             colors: {
               exotic: {
-                dark: '#0f0f13',
-                card: '#18181b',
+                bg: '#f8fafc',      // Fond très clair (slate-50)
+                card: '#ffffff',    // Carte blanche
+                text: '#1e293b',    // Texte principal sombre (slate-800)
+                muted: '#64748b',   // Texte secondaire (slate-500)
+                border: '#e2e8f0',  // Bordures douces (slate-200)
                 gold: '#d4af37',
                 rose: '#e11d48',
                 rosehover: '#be123c',
@@ -40,7 +43,7 @@
 }
 </script>
 </head>
-  <body class="bg-exotic-dark text-white antialiased">
+  <body class="bg-exotic-bg text-exotic-text antialiased">
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
   </body>
